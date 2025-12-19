@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complete Your Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="end.css" />
+</head>
+<body>
+    <header>
+      <img src="https://images.shiksha.com/mediadata/images/1570441904phpGyuPi8.jpeg" 
+     alt="NIT Delhi Logo" 
+     style="height: 40px; position: absolute; top: 20px; left: 20px; z-index: 10;">
+
+        CampusCart:Spend Less Share More
+      </header>
+  <form id="profileForm">
+    <h2>Complete Your Profile</h2>
+  
+    <label>Full Name <span>*</span></label>
+    <input type="text" id="name" required>
+  
+    <label>Branch <span>*</span></label>
+    <input type="text" id="branch" required>
+  
+    <label>Year <span>*</span></label>
+    <select id="year" required>
+      <option value="">Select your year</option>
+      <option>1st Year</option>
+      <option>2nd Year</option>
+      <option>3rd Year</option>
+      <option>4th Year</option>
+    </select>
+  
+    <label>Hostel Name (optional)</label>
+    <input type="text" id="hostel">
+  
+    <label>Contact No. <span>*</span></label>
+    <input type="tel" id="contact" required placeholder="e.g., 9876543210">
+  
+    <label>UPI ID (optional)</label>
+    <input type="text" id="upi">
+  
+    <button type="submit">Save & Continue</button>
+  </form>
+  
+
+  <script type="module">
+    import {
+      auth,
+      onAuthStateChanged,
+      doc,
+      getDoc,
+      saveProfileData
+    } from './firebase.js';
+
+    const form = document.getElementById('profileForm');
+    let currentUser;
+
+    // Check authentication and existing profile
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.location.href = 'auth.html';
+        return;
+      }
+      currentUser = user;
+
+      const userRef = doc('users', user.uid);
+      const userSnap = await getDoc(userRef);
+      if (userSnap.exists()) {
+        window.location.href = 'end.html'; // Profile already exists
+      }
+    });
+
+    // Save profile on submit
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const branch = document.getElementById('branch').value.trim();
+      const year = document.getElementById('year').value;
+      const hostel = document.getElementById('hostel').value.trim();
+      const contact = document.getElementById('contact').value.trim();
+      const upi = document.getElementById('upi').value.trim();
+
+      const profileData = {
+        name,
+        branch,
+        year,
+        hostel,
+        contact,
+        upi,
+        email: currentUser.email
+      };
+
+      try {
+        await saveProfileData(currentUser.uid, profileData);
+        window.location.href = 'end.html';
+      } catch (error) {
+        console.error("Failed to save profile:", error);
+        alert("An error occurred while saving your profile. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>
