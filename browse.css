@@ -1,4 +1,4 @@
-/* General Page Styling */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #f0f4f8;
@@ -7,7 +7,7 @@ body {
     padding: 20px;
   }
   
-  /* Section Titles */
+  
   section h2 {
     text-align: center;
     font-size: 1.8rem;
@@ -15,7 +15,7 @@ body {
     color: #0056b3;
   }
   
-  /* Section Layout */
+
   section {
     background: #ffffff;
     border-radius: 12px;
@@ -24,7 +24,7 @@ body {
     margin-bottom: 40px;
   }
   
-  /* Item & Request Containers */
+  
   .item-list,
   .request-list {
     display: grid;
@@ -33,7 +33,7 @@ body {
     margin-top: 20px;
   }
   
-  /* Card Style for Items & Requests */
+  
   .item-list > div,
   .request-list > div {
     background-color: #ffffff;
@@ -50,7 +50,7 @@ body {
     box-shadow: 0 6px 16px rgba(0, 123, 255, 0.15);
   }
   
-  /* Item/Request Image (if present) */
+
   .item-list img,
   .request-list img {
     width: 100%;
@@ -60,7 +60,7 @@ body {
     margin-bottom: 12px;
   }
   
-  /* Text Content */
+  
   .item-list h4,
   .request-list h4 {
     margin: 0 0 10px;
@@ -75,7 +75,7 @@ body {
     color: #555;
   }
   
-  /* Buttons (if added later) */
+
   .card-button {
     display: inline-block;
     padding: 8px 16px;
@@ -104,7 +104,7 @@ body {
     border-radius: 8px;
   }
   
-  /* Search Bar Styling */
+  
 .search-bar-container {
     text-align: center;
     margin-bottom: 20px;
@@ -118,7 +118,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 8px;
   }
-  /* Header Styling */
+  
 .main-header {
     background-color: #004080;
     color: white;
@@ -127,7 +127,7 @@ body {
     align-items: center;
     gap: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: -20px -20px 30px -20px; /* cancels body padding */
+    margin: -20px -20px 30px -20px; 
   }
   
   .logo {
@@ -139,7 +139,6 @@ body {
     font-weight: 600;
   }
   
-  /* Match button style site-wide */
   button,
   .card-button {
     font-family: inherit;
@@ -158,7 +157,7 @@ body {
     background-color: #003060;
   }
   
-  /* Consistent font & spacing for inputs */
+
   input[type="text"],
   select {
     font-family: inherit;
@@ -168,7 +167,7 @@ body {
     border-radius: 8px;
   }
   
-  /* Responsive Fixes */
+  
   @media (max-width: 600px) {
     #itemSearchInput,
     #requestSearchInput {
@@ -197,7 +196,7 @@ body {
     font-size: 1.8rem;
     font-weight: 600;
   }
-  /*search*/
+
   .search-bar-container {
     margin: 15px 0;
     display: flex;
@@ -207,7 +206,7 @@ body {
   
   .search-bar-container input[type="text"] {
     width: 60%;
-    padding: 10px 15px 10px 40px; /* Extra left padding for icon */
+    padding: 10px 15px 10px 40px; 
     border: 1.5px solid #0077cc;
     border-radius: 25px;
     font-size: 16px;
@@ -223,9 +222,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 119, 204, 0.3);
   }
   
-  /* Icon styling */
   .search-bar-container::before {
-    content: "\f002"; /* Font Awesome search icon */
+    content: "\f002"; 
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     position: absolute;

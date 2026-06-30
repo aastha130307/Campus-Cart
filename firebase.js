@@ -1,4 +1,4 @@
-// Import Firebase modules
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import {
   getAuth,
@@ -27,7 +27,7 @@ import {
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
-// Firebase configuration
+
 const firebaseConfig = {
   apiKey: "AIzaSyA0ySaX6Xqsu-XMIRZtlySBL612mnnM99I",
   authDomain: "campus-cart-fc7a1.firebaseapp.com",
@@ -37,17 +37,17 @@ const firebaseConfig = {
   appId: "1:124489655000:web:d501245aa33bf5611badad"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 
-// Save profile data to Firestore (without image upload)
+
 async function saveProfileData(userId, profileData) {
   try {
     const userRef = doc(db, "users", userId);
-    await setDoc(userRef, profileData); // Store profile data without image
+    await setDoc(userRef, profileData); 
     console.log("Profile data saved successfully.");
   } catch (error) {
     console.error("Error saving profile data:", error);
@@ -56,23 +56,22 @@ async function saveProfileData(userId, profileData) {
 }
 
 
-// Update existing profile data
 async function updateProfileData(userId, profileData) {
   try {
     const userRef = doc(db, "users", userId);
-    await updateDoc(userRef, profileData); // Update user data in Firestore
+    await updateDoc(userRef, profileData); 
   } catch (error) {
     console.error("Error updating profile data:", error);
   }
 }
 
-// Get user profile data from Firestore
+
 async function getProfileData(userId) {
   try {
     const userRef = doc(db, "users", userId);
     const userSnap = await getDoc(userRef);
     if (userSnap.exists()) {
-      return userSnap.data(); // Return profile data
+      return userSnap.data(); 
     } else {
       console.log("No profile data found.");
       return null;
@@ -82,7 +81,7 @@ async function getProfileData(userId) {
   }
 }
 
-// Export modules and functions
+
 export {
   app,
   auth,

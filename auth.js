@@ -1,4 +1,4 @@
-// Import Firebase modules and methods
+
 import {
     auth,
     signInWithEmailAndPassword,
@@ -11,16 +11,16 @@ import {
     onAuthStateChanged
 } from './firebase.js';
 
-// Get references to input fields
+
 const emailInput = document.getElementById("authEmail");
 const passwordInput = document.getElementById("authPassword");
 
-// LOGIN
+
 document.getElementById("loginBtn")?.addEventListener("click", async () => {
     try {
         const userCred = await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
 
-        // Ensure user has verified their email
+        
         if (!userCred.user.emailVerified) {
             await sendEmailVerification(userCred.user);
             alert("Email not verified. Verification email sent.");
@@ -35,7 +35,6 @@ document.getElementById("loginBtn")?.addEventListener("click", async () => {
     }
 });
 
-// REGISTER
 document.getElementById("registerBtn")?.addEventListener("click", async () => {
     try {
         const userCred = await createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
@@ -46,7 +45,7 @@ document.getElementById("registerBtn")?.addEventListener("click", async () => {
     }
 });
 
-// RESET PASSWORD
+
 document.getElementById("resetPasswordBtn")?.addEventListener("click", async () => {
     try {
         await sendPasswordResetEmail(auth, emailInput.value);
@@ -56,14 +55,13 @@ document.getElementById("resetPasswordBtn")?.addEventListener("click", async () 
     }
 });
 
-// GOOGLE LOGIN
 document.getElementById("googleLoginBtn")?.addEventListener("click", async () => {
     try {
         const provider = new GoogleAuthProvider();
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
 
-        // Ensure Google user's email is verified
+        
         if (!user.emailVerified) {
             await sendEmailVerification(user);
             alert("Verification email sent. Please verify.");
@@ -78,22 +76,21 @@ document.getElementById("googleLoginBtn")?.addEventListener("click", async () =>
     }
 });
 
-// REDIRECT IF ALREADY LOGGED IN AND VERIFIED
 onAuthStateChanged(auth, (user) => {
     if (user && user.emailVerified) {
         checkProfileAndRedirect(user.uid);
 
     }
 });
-import { db, doc, getDoc } from './firebase.js'; // ⬅ Make sure to import these if not already
+import { db, doc, getDoc } from './firebase.js'; 
 
 async function checkProfileAndRedirect(uid) {
     const userRef = doc(db, 'users', uid);
     const userSnap = await getDoc(userRef);
 
     if (userSnap.exists()) {
-        window.location.href = "end.html"; // Profile exists
+        window.location.href = "end.html"; 
     } else {
-        window.location.href = "profile-setup.html"; // New user, needs setup
+        window.location.href = "profile-setup.html"; 
     }
 }

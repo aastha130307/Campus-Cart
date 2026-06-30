@@ -10,9 +10,9 @@ import {
   addDoc
 } from './firebase.js';
 
-// DOMContentLoaded Event to initialize
+
 window.addEventListener('DOMContentLoaded', () => {
-  // Show a specific section
+  
   function showSection(sectionId) {
     document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
     const section = document.getElementById(sectionId);
@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (section) section.style.display = 'block';
   }
 
-  // Load user profile
+  
   async function loadUserProfile() {
     const user = auth.currentUser;
     if (!user) {
@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Submit a request
+ 
   document.getElementById('requestForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -88,7 +88,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ✅ Submit a sell item
+ 
   document.getElementById('sellForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -120,7 +120,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Navigation buttons
+  
   document.getElementById('sellBtn')?.addEventListener('click', () => showSection('sellSection'));
   document.getElementById('requestBtn')?.addEventListener('click', () => showSection('requestSection'));
   document.getElementById('browseBtn')?.addEventListener('click', () => {
@@ -129,7 +129,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   document.getElementById('profileBtn')?.addEventListener('click', () => showSection('profileSection'));
 
-  // Logout
+
   document.getElementById("logoutButton")?.addEventListener("click", async () => {
     await signOut(auth);
     alert("Logged out successfully.");
@@ -137,7 +137,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.getElementById("mainContent").style.display = "none";
   });
 
-  // Load browse section
+ 
   async function loadBrowseSection() {
     const itemsContainer = document.getElementById('browseItemsContainer');
     const requestsContainer = document.getElementById('browseRequestsContainer');

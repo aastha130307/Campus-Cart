@@ -9,25 +9,21 @@
 
 </head>
 <body>
-  <!-- Main Website Content -->
-  <div id="mainContent" style="display: none;">
-    <!-- Header Section -->
+   <div id="mainContent" style="display: none;">
+   
     <header>
       <h1>CampusCart:Spend Less Share More</h1>
       <img src="https://images.shiksha.com/mediadata/images/1570441904phpGyuPi8.jpeg" alt="NIT Delhi Logo" class="logo" />
     </header>
 
-    <!-- Logout Button at Top Right -->
-
-
-    <!-- Banner Images -->
+   
     <div id="nitImages">
       <img src="https://zettainstitute.com/wp-content/uploads/2023/11/National-Institutes-of-Technology-NIT.webp" alt="NIT Delhi Campus 1">
       <img src="https://th.bing.com/th/id/OIP.ZWiWN7KhTzoPeBPgQmQrpQHaE8?rs=1&pid=ImgDetMain" alt="NIT Delhi Campus 2">
       <img src="https://www.ic2sdt.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fnitd_acad.5f53daf4.jpg&w=3840&q=75" alt="Hostel Life">
     </div>
 
-    <!-- Navigation Buttons -->
+    
     <nav class="sidebar-nav">
       <button id="sellBtn"><i class="fas fa-tag"></i> Sell Item</button>
       <button id="requestBtn"><i class="fas fa-hand-holding"></i> Request Item</button>
@@ -44,7 +40,7 @@
       <i class="fas fa-quote-right quote-mark"></i>
     </div>
     
-    <!-- Sell Section -->
+
     <section id="sellSection" class="section" style="display: none;">
       <h2>Upload Your Item for Sale</h2>
       <form id="sellForm">
@@ -63,7 +59,7 @@
       </form>
     </section>
 
-    <!-- Request Section -->
+    
     <section id="requestSection" class="section" style="display: none;">
       <h2>Request an Item</h2>
       <form id="requestForm">
@@ -96,7 +92,7 @@
       </form>
     </section>
 
-    <!-- Browse Section -->
+    
     <section id="browseSection" class="section" style="display: none;">
       <h2>Items for Sale</h2>
       <div id="browseItemsContainer"></div>
@@ -110,31 +106,31 @@
     
 
     
-  <!-- Script for Handling Authentication -->
+
   <script type="module">
     import { auth, signOut, onAuthStateChanged } from './firebase.js';
 
-    // Handle logout
+    
     document.getElementById("logoutButton").addEventListener("click", () => {
       signOut(auth).then(() => {
-        window.location.href = "auth.html"; // Redirect to login page after logout
+        window.location.href = "auth.html"; 
       }).catch((err) => {
         alert("Logout failed: " + err.message);
       });
     });
 
-    // Wait for authentication state change
+    
     onAuthStateChanged(auth, (user) => {
       if (user && user.emailVerified) {
-        document.getElementById("mainContent").style.display = "block"; // Show main content if logged in
+        document.getElementById("mainContent").style.display = "block"; 
       } else {
-        window.location.href = "auth.html"; // Redirect to auth page if not logged in
+        window.location.href = "auth.html"; 
       }
     });
   </script>
   <script>
     document.getElementById('profileBtn').addEventListener('click', () => {
-      window.location.href = 'profile.html';  // Redirect to the profile page
+      window.location.href = 'profile.html';  
     });
   </script>
   

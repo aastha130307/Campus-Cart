@@ -2,7 +2,7 @@ import {
     auth, db, doc, getDoc, collection, query, where, getDocs, addDoc, onAuthStateChanged 
   } from './firebase.js';
   
-  // DOM Elements
+ 
   const userNameElement = document.getElementById('userName');
   const userBranchElement = document.getElementById('userBranch');
   const userYearElement = document.getElementById('userYear');
@@ -13,7 +13,7 @@ import {
   const myRequestsContainer = document.getElementById('myRequestsContainer');
   const responsesContainer = document.getElementById('responsesContainer');
   
-  // Fetch user profile
+ 
   async function fetchUserProfile(userIdToFetch, isOwnProfile, isResponderProfile = false) {
     try {
       const profileSnap = await getDoc(doc(db, 'users', userIdToFetch));
@@ -41,7 +41,7 @@ import {
     }
   }
   
-  // Fetch user's items
+ 
   async function fetchUserItems(userId) {
     try {
       const q = query(collection(db, 'items'), where("userID", "==", userId));
@@ -70,7 +70,7 @@ import {
     }
   }
   
-  // Fetch user's requests
+  
   async function fetchUserRequests(userId) {
     try {
       const q = query(collection(db, 'requests'), where("userID", "==", userId)); // fixed from requesterID
@@ -101,7 +101,7 @@ import {
     }
   }
   
-  // Fetch responses received for user's requests
+  
   async function fetchResponses(userId) {
     try {
       const q = query(collection(db, 'responses'), where("requesterID", "==", userId));
@@ -134,7 +134,7 @@ import {
     }
   }
   
-  // Add response to database (optional trigger if you plan to call this elsewhere)
+ 
   export async function handleResponderResponse(requestId, responderId, requesterId) {
     try {
       const responderSnap = await getDoc(doc(db, 'users', responderId));
@@ -158,7 +158,7 @@ import {
     }
   }
   
-  // Button Event Listeners
+
   document.getElementById("editProfileBtn")?.addEventListener("click", () => {
     window.location.href = "profile-setup.html";
   });
@@ -176,7 +176,7 @@ import {
     window.location.href = "end.html";
   });
   
-  // Initialize on auth change
+  
   onAuthStateChanged(auth, (user) => {
     if (user && user.emailVerified) {
       const params = new URLSearchParams(window.location.search);

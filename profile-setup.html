@@ -57,7 +57,7 @@
     const form = document.getElementById('profileForm');
     let currentUser;
 
-    // Check authentication and existing profile
+    
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
         window.location.href = 'auth.html';
@@ -68,11 +68,11 @@
       const userRef = doc('users', user.uid);
       const userSnap = await getDoc(userRef);
       if (userSnap.exists()) {
-        window.location.href = 'end.html'; // Profile already exists
+        window.location.href = 'end.html'; 
       }
     });
 
-    // Save profile on submit
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 

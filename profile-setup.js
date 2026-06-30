@@ -11,7 +11,7 @@ import {
     getDownloadURL
   } from './firebase.js';
   
-  // Get references to form fields
+
   const profileName = document.getElementById('profileName');
   const profileBranch = document.getElementById('profileBranch');
   const profileYear = document.getElementById('profileYear');
@@ -23,7 +23,7 @@ import {
   const profilePic = document.getElementById('profilePic');
   const feedbackMessage = document.getElementById('feedbackMessage');
   
-  // Ensure user is logged in and set up profile form
+ 
   onAuthStateChanged(auth, (user) => {
     if (user) {
       loadProfile(user.uid);
@@ -32,7 +32,7 @@ import {
     }
   });
   
-  // Load existing profile data (if any)
+  
   async function loadProfile(uid) {
     const userRef = doc(db, 'users', uid);
     const userSnap = await getDoc(userRef);
@@ -51,7 +51,7 @@ import {
     }
   }
   
-  // Save the updated profile data
+  
 saveBtn.addEventListener('click', async () => {
     const user = auth.currentUser;
 
@@ -71,7 +71,7 @@ saveBtn.addEventListener('click', async () => {
     };
 
     try {
-        // Handle profile picture upload if file is selected
+        
         if (profilePicInput.files.length > 0) {
             const file = profilePicInput.files[0];
             const storageRef = ref(storage, 'profilePics/${uid}');
@@ -80,11 +80,11 @@ saveBtn.addEventListener('click', async () => {
             updatedData.profilePic = downloadURL;
         }
 
-        // Save to Firestore
+        
         const userRef = doc(db, 'users', uid);
         await updateDoc(userRef, updatedData);
 
-        // Redirect to end.html after saving the profile
+        
         window.location.href = 'end.html';
 
     } catch (err) {

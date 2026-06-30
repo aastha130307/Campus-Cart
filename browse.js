@@ -17,7 +17,7 @@ import {
   let allItems = [];
   let allRequests = [];
   
-  // Handle response to a request
+ 
   async function handleResponderResponse(reqId, requesterID, currentUser) {
     if (!requesterID) {
       alert("Error: requester ID not found.");
@@ -52,7 +52,7 @@ import {
     }
   }
   
-  // Fetch and render items for sale
+  
   async function fetchItemsForSale() {
     try {
       const snapshot = await getDocs(collection(db, 'items'));
@@ -102,7 +102,7 @@ import {
     });
   }
   
-  // Fetch and render requested items
+ 
   async function fetchRequestedItems(currentUser) {
     try {
       const snapshot = await getDocs(collection(db, 'requests'));
@@ -159,7 +159,6 @@ import {
     });
   }
   
-  // Search filter for items
   if (itemSearchInput) {
     itemSearchInput.addEventListener("input", () => {
       const query = itemSearchInput.value.toLowerCase();
@@ -171,7 +170,7 @@ import {
     });
   }
   
-  // Search filter for requests
+  
   if (requestSearchInput) {
     requestSearchInput.addEventListener("input", () => {
       const query = requestSearchInput.value.toLowerCase();
@@ -184,7 +183,7 @@ import {
     });
   }
   
-  // Init
+ 
   onAuthStateChanged(auth, (user) => {
     if (user && user.emailVerified) {
       fetchItemsForSale();
